@@ -17,218 +17,161 @@
             max-width: 900px;
             margin: 0 auto;
             background: transparent;
+            padding-bottom: 80px; /* トースト通知用の余白 */
         }
 
-        /* --- 追加: 作成者クレジットのスタイル --- */
         .credit-link {
-            display: block;
-            text-align: right; /* 右寄せ */
-            font-size: 0.75rem; /* 小さめの文字 */
-            color: #777;
-            text-decoration: none; /* 下線を消す */
-            padding: 0 10px;
-            margin-bottom: 3px;
+            display: block; text-align: right; font-size: 0.75rem; color: #777;
+            text-decoration: none; padding: 0 10px; margin-bottom: 3px;
         }
-        .credit-link strong {
-            color: #555; /* 名前を少し濃く */
-        }
-        .credit-link:hover {
-            text-decoration: underline; /* ホバー時は下線を表示 */
-            color: #007bff; /* 青色に変わる */
-        }
-        /* -------------------------------------- */
+        .credit-link strong { color: #555; }
+        .credit-link:hover { text-decoration: underline; color: #007bff; }
 
         h1 { font-size: 1.4rem; margin-top: 0; padding: 0 10px; }
         
-        .search-box { margin-bottom: 15px; padding: 0 10px; }
+        .search-box { margin-bottom: 10px; padding: 0 10px; }
         .search-box input {
-            width: 100%;
-            padding: 12px;
-            font-size: 1rem;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            box-sizing: border-box;
-            background-color: #fff;
+            width: 100%; padding: 12px; font-size: 1rem;
+            border: 2px solid #ddd; border-radius: 8px;
+            box-sizing: border-box; background-color: #fff;
         }
         .search-box input:focus { border-color: #4CAF50; outline: none; }
 
+        /* --- 絞り込みトグルスイッチ --- */
+        .filter-controls {
+            padding: 0 10px; margin-bottom: 15px;
+        }
+        .checkbox-label {
+            display: inline-flex; align-items: center; gap: 8px;
+            cursor: pointer; font-size: 0.95rem; font-weight: bold;
+            background: #fff; padding: 8px 12px; border-radius: 8px;
+            border: 1px solid #ccc; box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            user-select: none;
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: 18px; height: 18px; cursor: pointer;
+        }
+
         .summary-box {
-            position: sticky;
-            top: 10px;
-            z-index: 100;
-            margin: 0 10px 20px 10px;
-            padding: 15px;
-            background-color: #fff3e0;
-            border-left: 5px solid #ff9800;
-            border-radius: 8px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            align-items: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+            position: sticky; top: 10px; z-index: 100;
+            margin: 0 10px 20px 10px; padding: 15px;
+            background-color: #fff3e0; border-left: 5px solid #ff9800; border-radius: 8px;
+            font-size: 1.1rem; font-weight: bold; display: flex; gap: 15px;
+            flex-wrap: wrap; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
         }
-        .summary-value {
-            color: #d32f2f;
-            font-size: 1.3rem;
-        }
+        .summary-value { color: #d32f2f; font-size: 1.3rem; }
         .clear-btn {
-            margin-left: auto;
-            padding: 10px 16px;
-            background-color: #f44336;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: bold;
+            margin-left: auto; padding: 10px 16px; background-color: #f44336; color: white;
+            border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold;
         }
         .clear-btn:hover { background-color: #d32f2f; }
         
         .badges-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 8px;
-            align-items: center;
+            display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; align-items: center;
         }
+        
+        /* ウマ娘バッジ（タップ可能） */
         .uma-badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 12px;
-            color: #fff;
-            font-size: 0.8rem;
-            font-weight: bold;
-            text-shadow: 0px 1px 3px rgba(0,0,0,0.9);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.15);
-            white-space: nowrap;
+            display: inline-block; padding: 4px 10px; border-radius: 12px;
+            color: #fff; font-size: 0.8rem; font-weight: bold;
+            text-shadow: 0px 1px 3px rgba(0,0,0,0.9); box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+            white-space: nowrap; cursor: pointer; /* ポインターに変更 */
+            transition: transform 0.1s, opacity 0.2s;
         }
+        .uma-badge:hover { opacity: 0.8; transform: translateY(-1px); }
+        .uma-badge:active { transform: scale(0.95); }
+        
         .info-badge {
-            display: inline-block;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            background-color: transparent;
-            white-space: nowrap;
+            display: inline-block; padding: 3px 8px; border-radius: 4px;
+            font-size: 0.75rem; font-weight: bold; background-color: transparent; white-space: nowrap;
         }
         .type-badge { border: 1.5px solid #2196f3; color: #2196f3; }
         .trading-badge { border: 1.5px solid #e91e63; color: #e91e63; }
 
-        .item-list {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            padding: 0 10px;
-        }
+        .item-list { display: flex; flex-direction: column; gap: 12px; padding: 0 10px; }
         .item-card {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            background-color: #fff;
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-            transition: background-color 0.2s;
+            display: flex; flex-direction: column; gap: 12px; background-color: #fff;
+            border: 1px solid #e0e0e0; border-radius: 10px; padding: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: background-color 0.2s;
         }
-        .item-card.checked-row {
-            background-color: #f1f8e9;
-            border-color: #a5d6a7;
-        }
+        .item-card.checked-row { background-color: #f1f8e9; border-color: #a5d6a7; }
         
         .card-top { width: 100%; }
-        .item-name {
-            font-size: 1.05rem;
-            font-weight: bold;
-            line-height: 1.4;
-            color: #222;
-        }
+        .item-name { font-size: 1.05rem; font-weight: bold; line-height: 1.4; color: #222; }
 
-        .card-bottom {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 15px;
-        }
+        .card-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 15px; }
         .card-bottom-left { flex: 1; }
-        .item-remarks {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 6px;
-        }
-        .item-price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: #d32f2f;
-        }
+        .item-remarks { font-size: 0.8rem; color: #666; margin-bottom: 6px; }
+        .item-price { font-size: 1.25rem; font-weight: bold; color: #d32f2f; }
 
         .card-bottom-right {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            width: 120px;
+            display: flex; flex-direction: column; gap: 6px; width: 120px;
+            transition: opacity 0.3s;
         }
         
-        .qty-main-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        /* トレーディング商品の排他ロック時のUI（半透明化） */
+        .trading-locked .card-bottom-right {
+            opacity: 0.35;
         }
+        
+        .qty-main-row { display: flex; align-items: center; justify-content: space-between; }
         .qty-btn {
-            width: 38px; 
-            height: 38px;
-            font-size: 1.3rem; 
-            font-weight: bold; 
-            color: #333;
-            background-color: #f8f9fa; 
-            border: 1px solid #ccc; 
-            border-radius: 6px;
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center;
-            padding: 0; 
-            touch-action: manipulation;
+            width: 38px; height: 38px; font-size: 1.3rem; font-weight: bold; color: #333;
+            background-color: #f8f9fa; border: 1px solid #ccc; border-radius: 6px;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            padding: 0; touch-action: manipulation; transition: background-color 0.1s;
         }
-        .qty-btn:active { transform: scale(0.95); }
-        .qty-btn:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
-        .qty-display { 
-            font-size: 1.2rem; 
-            font-weight: bold; 
-            text-align: center; 
-            flex: 1;
-        }
-
-        .qty-sub-row {
-            display: flex;
-            gap: 6px;
-            justify-content: space-between;
-        }
-        .qty-btn-small {
-            flex: 1;
-            height: 28px;
-            font-size: 0.75rem;
-            font-weight: bold;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            touch-action: manipulation;
-        }
-        .qty-btn-small:active { transform: scale(0.95); }
-        .qty-btn-small:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+        .qty-btn:active:not(.is-disabled) { transform: scale(0.95); background-color: #e0e0e0; }
         
+        .qty-display { font-size: 1.2rem; font-weight: bold; text-align: center; flex: 1; }
+        .qty-sub-row { display: flex; gap: 6px; justify-content: space-between; }
+        .qty-btn-small {
+            flex: 1; height: 28px; font-size: 0.75rem; font-weight: bold; color: white;
+            border: none; border-radius: 4px; cursor: pointer; touch-action: manipulation;
+        }
+        .qty-btn-small:active:not(.is-disabled) { transform: scale(0.95); }
         .min-btn { background-color: #757575; }
         .max-btn { background-color: #ff9800; }
+
+        /* ネイティブdisabledの代わりにJS判定用のクラスを用いる */
+        .is-disabled { opacity: 0.4; cursor: not-allowed; }
+
+        /* --- トースト（ツールチップ） --- */
+        .toast {
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(30, 30, 30, 0.9); color: white; padding: 12px 24px;
+            border-radius: 30px; font-size: 0.9rem; font-weight: bold;
+            opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s;
+            z-index: 1000; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+
+        /* --- モーダル（ダイアログ） --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5); display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 2000;
+        }
+        .modal-overlay.show { opacity: 1; pointer-events: auto; }
+        .modal-content {
+            background: #fff; padding: 25px; border-radius: 12px; width: 90%; max-width: 320px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center;
+        }
+        .modal-content p { font-size: 1.05rem; font-weight: bold; margin-bottom: 20px; }
+        .modal-actions { display: flex; gap: 10px; justify-content: center; }
+        .modal-btn {
+            flex: 1; padding: 12px; border: none; border-radius: 6px; font-size: 1rem;
+            font-weight: bold; cursor: pointer;
+        }
+        .modal-btn.cancel { background: #e0e0e0; color: #333; }
+        .modal-btn.ok { background: #f44336; color: white; }
 
         @media screen and (max-width: 480px) {
             .summary-box { flex-direction: column; align-items: stretch; gap: 10px; }
             .clear-btn { margin-left: 0; width: 100%; padding: 12px; }
             .item-card { padding: 12px; }
+            .toast { width: 90%; white-space: normal; text-align: center; } /* スマホでは折り返し許可 */
         }
-        
         .loading { color: #666; text-align: center; padding: 20px; font-weight: bold; }
     </style>
 </head>
@@ -245,6 +188,13 @@
         <input type="text" id="searchInput" placeholder="ウマ娘の名前、グッズ名を入力">
     </div>
 
+    <div class="filter-controls">
+        <label class="checkbox-label">
+            <input type="checkbox" id="filterSelectedToggle">
+            <span>🛒 数量1以上のアイテムのみ表示</span>
+        </label>
+    </div>
+
     <div class="summary-box">
         <div>総購入点数: <span id="itemCount" class="summary-value">0</span> 点</div>
         <div>合計被弾額: <span id="totalPrice" class="summary-value">0</span> 円</div>
@@ -256,16 +206,45 @@
     <div id="itemList" class="item-list" style="display: none;"></div>
 </div>
 
+<div id="toast" class="toast"></div>
+
+<div id="confirmModal" class="modal-overlay">
+    <div class="modal-content">
+        <p>すべての数量を 0 にリセットしてもよろしいですか？</p>
+        <div class="modal-actions">
+            <button id="modalCancel" class="modal-btn cancel">キャンセル</button>
+            <button id="modalOk" class="modal-btn ok">リセット</button>
+        </div>
+    </div>
+</div>
+
 <script>
-    // JavaScriptコードは前回から変更ありません
     const itemsCsvPath = './items.csv';
     const colorCsvPath = './color.csv'; 
-    const STORAGE_KEY = 'umamusume_7th_goods_quantities_v4';
+    const STORAGE_KEY = 'umamusume_7th_goods_quantities_v5';
     
     let allData = [];
     let colorMap = {}; 
-    
     let itemQuantities = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+    // --- トースト通知機能 ---
+    let toastTimeout;
+    function showToast(msg) {
+        const toast = document.getElementById('toast');
+        toast.textContent = msg;
+        toast.classList.add('show');
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
+    // --- ウマ娘バッジタップ時の検索連携 ---
+    window.setSearchTarget = function(name) {
+        const input = document.getElementById('searchInput');
+        input.value = name;
+        applyFilters(); // 検索・フィルタの実行
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // 上部へスクロール
+        showToast(`${name} で絞り込みました`);
+    };
 
     Papa.parse(colorCsvPath, {
         download: true,
@@ -274,10 +253,7 @@
         complete: function(results) {
             results.data.forEach(row => {
                 if(row.name && row.main_color) {
-                    colorMap[row.name] = {
-                        main: row.main_color,
-                        sub: row.sub_color || '#cccccc'
-                    };
+                    colorMap[row.name] = { main: row.main_color, sub: row.sub_color || '#cccccc' };
                 }
             });
             loadItemsData();
@@ -295,55 +271,87 @@
             skipEmptyLines: true,
             complete: function(results) {
                 allData = results.data;
-                renderList(allData); 
+                applyFilters(); // 初期描画
                 updateSummary();
-
                 document.getElementById('loading').style.display = 'none';
                 document.getElementById('itemList').style.display = 'flex';
             },
             error: function(err) {
                 document.getElementById('loading').innerText = 'アイテムデータの読み込みに失敗しました。';
-                console.error(err);
             }
         });
     }
 
     function getBadgeColor(name) {
         let hash = 0;
-        for (let i = 0; i < name.length; i++) {
-            hash = name.charCodeAt(i) + ((hash << 5) - hash);
-        }
-        const h = Math.abs(hash) % 360;
-        return `hsl(${h}, 70%, 40%)`;
+        for (let i = 0; i < name.length; i++) { hash = name.charCodeAt(i) + ((hash << 5) - hash); }
+        return `hsl(${Math.abs(hash) % 360}, 70%, 40%)`;
     }
 
     function createBadgesHtml(nameStr) {
         if (!nameStr) return '';
-        const names = nameStr.split(',');
-        return names.map(name => {
+        return nameStr.split(',').map(name => {
             const cleanName = name.trim();
             if (!cleanName) return '';
-            
             let bgStyle = '';
             if (colorMap[cleanName]) {
                 const c = colorMap[cleanName];
                 bgStyle = `background: linear-gradient(135deg, ${c.main} 75%, ${c.sub} 25%);`;
             } else {
-                const bgColor = getBadgeColor(cleanName);
-                bgStyle = `background-color: ${bgColor};`;
+                bgStyle = `background-color: ${getBadgeColor(cleanName)};`;
             }
-            return `<span class="uma-badge" style="${bgStyle}">${cleanName}</span>`;
+            // バッジにonclickを付与
+            return `<span class="uma-badge" style="${bgStyle}" onclick="setSearchTarget('${cleanName}')">${cleanName}</span>`;
         }).join('');
     }
 
+    // --- トレーディング商品の排他制御用（現在選択されているトレーディング商品名の取得） ---
+    function getActiveTradingItems() {
+        const active = new Set();
+        allData.forEach(row => {
+            const id = row['ID'];
+            if (itemQuantities[id] > 0 && String(row['トレーディング']).toUpperCase() === 'TRUE') {
+                active.add(row['グッズ名']);
+            }
+        });
+        return active;
+    }
+
+    // --- 検索・フィルタリングの統合関数 ---
+    function applyFilters() {
+        const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
+        const onlySelected = document.getElementById('filterSelectedToggle').checked;
+        
+        const filteredData = allData.filter(row => {
+            const id = row['ID'];
+            const qty = itemQuantities[id] || 0;
+            
+            // 「数量1以上のみ表示」のチェック
+            if (onlySelected && qty <= 0) return false;
+            
+            // 検索キーワードのチェック
+            if (keyword) {
+                const umaName = (row['ウマ娘'] || '').toLowerCase();
+                const goodsName = (row['グッズ名'] || '').toLowerCase();
+                return umaName.includes(keyword) || goodsName.includes(keyword);
+            }
+            return true;
+        });
+        renderList(filteredData);
+    }
+
+    // リストの描画処理
     function renderList(data) {
         const listContainer = document.getElementById('itemList');
         listContainer.innerHTML = ''; 
 
         if (data.length === 0) {
-            listContainer.innerHTML = `<div style="text-align:center; padding:20px; color:#666;">該当するデータがありません</div>`;
+            listContainer.innerHTML = `<div style="text-align:center; padding:20px; color:#666;">該当するアイテムがありません</div>`;
             return;
         }
+
+        // 描画時点での、選択済みトレーディングアイテム名を取得
+        const activeTradingItems = getActiveTradingItems();
 
         data.forEach(row => {
             const rowId = row['ID']; 
@@ -352,53 +360,53 @@
             let currentQty = itemQuantities[rowId] || 0;
             const maxLimitStr = row['最大数量'];
             const maxLimit = maxLimitStr ? parseInt(maxLimitStr, 10) : 99;
+            const isTrading = String(row['トレーディング']).toUpperCase() === 'TRUE';
             
+            // この行がトレーディング商品であり、かつ「自分は未選択(0)」だが「同名の別キャラ商品が選択済み」の場合にロックする
+            const isTradingLocked = (isTrading && currentQty === 0 && activeTradingItems.has(row['グッズ名']));
+
             const card = document.createElement('div');
             card.className = 'item-card';
             if (currentQty > 0) card.classList.add('checked-row');
+            if (isTradingLocked) card.classList.add('trading-locked');
 
+            // --- 上段（バッジ・アイテム名） ---
             const topDiv = document.createElement('div');
             topDiv.className = 'card-top';
 
             const badgesWrapper = document.createElement('div');
             badgesWrapper.className = 'badges-wrapper';
-            
             if (row['ウマ娘']) badgesWrapper.innerHTML += createBadgesHtml(row['ウマ娘']);
             if (row['入手タイプ']) badgesWrapper.innerHTML += `<span class="info-badge type-badge">${row['入手タイプ']}</span>`;
-            if (String(row['トレーディング']).toUpperCase() === 'TRUE') {
-                badgesWrapper.innerHTML += `<span class="info-badge trading-badge">トレーディング</span>`;
-            }
+            if (isTrading) badgesWrapper.innerHTML += `<span class="info-badge trading-badge">トレーディング</span>`;
             topDiv.appendChild(badgesWrapper);
 
             const nameDiv = document.createElement('div');
             nameDiv.className = 'item-name';
             nameDiv.textContent = row['グッズ名'] || '';
             topDiv.appendChild(nameDiv);
-            
             card.appendChild(topDiv);
 
+            // --- 下段（左：金額等、右：コントロール） ---
             const bottomDiv = document.createElement('div');
             bottomDiv.className = 'card-bottom';
 
             const bottomLeft = document.createElement('div');
             bottomLeft.className = 'card-bottom-left';
-
             if (row['備考']) {
                 const remarksDiv = document.createElement('div');
                 remarksDiv.className = 'item-remarks';
                 remarksDiv.textContent = row['備考'];
                 bottomLeft.appendChild(remarksDiv);
             }
-
             const priceDiv = document.createElement('div');
             priceDiv.className = 'item-price';
-            const priceStr = row['金額'] || '0';
-            const priceNum = parseInt(priceStr.toString().replace(/[^0-9]/g, ''), 10) || 0;
+            const priceNum = parseInt((row['金額'] || '0').toString().replace(/[^0-9]/g, ''), 10) || 0;
             priceDiv.textContent = priceNum.toLocaleString() + '円';
             bottomLeft.appendChild(priceDiv);
-
             bottomDiv.appendChild(bottomLeft);
 
+            // --- 右側（UI） ---
             const bottomRight = document.createElement('div');
             bottomRight.className = 'card-bottom-right';
 
@@ -428,7 +436,6 @@
             const minBtn = document.createElement('button');
             minBtn.className = 'qty-btn-small min-btn';
             minBtn.textContent = 'MIN';
-
             qtySubRow.appendChild(minBtn);
 
             let maxBtn = null;
@@ -438,113 +445,107 @@
                 maxBtn.textContent = 'MAX';
                 qtySubRow.appendChild(maxBtn);
             }
-            
             bottomRight.appendChild(qtySubRow);
             bottomDiv.appendChild(bottomRight);
-            
             card.appendChild(bottomDiv);
 
-            const updateButtons = () => {
+            // --- ボタン状態の管理（native disabled ではなく JSクラスによる制御） ---
+            const updateButtonsState = () => {
                 const isMin = currentQty <= 0;
                 const isMax = currentQty >= maxLimit;
                 
-                minusBtn.disabled = isMin;
-                minBtn.disabled = isMin;
+                minusBtn.classList.toggle('is-disabled', isMin || isTradingLocked);
+                minBtn.classList.toggle('is-disabled', isMin || isTradingLocked);
                 
-                plusBtn.disabled = isMax;
-                if (maxBtn) maxBtn.disabled = isMax;
+                plusBtn.classList.toggle('is-disabled', isMax || isTradingLocked);
+                if (maxBtn) maxBtn.classList.toggle('is-disabled', isMax || isTradingLocked);
             };
-            updateButtons();
+            updateButtonsState();
 
-            const changeQty = (newQty) => {
-                if (newQty < 0 || newQty > maxLimit) return;
-                currentQty = newQty;
-                qtySpan.textContent = currentQty;
-                
-                if (currentQty === 0) {
-                    delete itemQuantities[rowId];
-                    card.classList.remove('checked-row');
-                } else {
-                    itemQuantities[rowId] = currentQty;
-                    card.classList.add('checked-row');
+            // 数量変更の共通ロジック
+            const tryChangeQty = (newQty, btnElement) => {
+                // ツールチップ案内の判定
+                if (isTradingLocked) {
+                    showToast('同一のトレーディング商品が他のウマ娘で追加されています。');
+                    return;
                 }
+                if (btnElement.classList.contains('is-disabled')) {
+                    if (newQty > currentQty) showToast('購入制限数に達しています。');
+                    if (newQty < currentQty) showToast('数量はこれ以上減らせません。');
+                    return;
+                }
+
+                currentQty = newQty;
+                if (currentQty === 0) delete itemQuantities[rowId];
+                else itemQuantities[rowId] = currentQty;
                 
-                updateButtons();
                 saveState();
                 updateSummary();
+                
+                // トレーディング商品の場合、または「選択済みのみ表示」で数量が0になった場合は全体を再描画して状態を同期する
+                const onlySelected = document.getElementById('filterSelectedToggle').checked;
+                if (isTrading || (onlySelected && currentQty === 0)) {
+                    applyFilters();
+                } else {
+                    // 通常アイテムの場合は局所的にDOMを更新（高速化・スクロール保持）
+                    qtySpan.textContent = currentQty;
+                    updateButtonsState();
+                    if (currentQty === 0) card.classList.remove('checked-row');
+                    else card.classList.add('checked-row');
+                }
             };
 
-            minusBtn.addEventListener('click', () => changeQty(currentQty - 1));
-            plusBtn.addEventListener('click', () => changeQty(currentQty + 1));
-            minBtn.addEventListener('click', () => changeQty(0));
+            minusBtn.addEventListener('click', function() { tryChangeQty(currentQty - 1, this); });
+            plusBtn.addEventListener('click', function() { tryChangeQty(currentQty + 1, this); });
+            minBtn.addEventListener('click', function() { tryChangeQty(0, this); });
             if (maxBtn) {
-                maxBtn.addEventListener('click', () => changeQty(maxLimit));
+                maxBtn.addEventListener('click', function() { tryChangeQty(maxLimit, this); });
             }
             
             listContainer.appendChild(card);
         });
     }
 
-    function saveState() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(itemQuantities));
-    }
+    function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(itemQuantities)); }
 
     function updateSummary() {
-        let totalAmount = 0;
-        let totalItems = 0;
-
+        let totalAmount = 0; let totalItems = 0;
         allData.forEach(row => {
-            const rowId = row['ID'];
-            const qty = itemQuantities[rowId] || 0;
-            
+            const qty = itemQuantities[row['ID']] || 0;
             if (qty > 0) {
-                const priceStr = row['金額'] || '0';
-                const priceNum = parseInt(priceStr.toString().replace(/[^0-9]/g, ''), 10) || 0;
+                const priceNum = parseInt((row['金額'] || '0').toString().replace(/[^0-9]/g, ''), 10) || 0;
                 totalAmount += (priceNum * qty);
                 totalItems += qty;
             }
         });
-
         document.getElementById('itemCount').textContent = totalItems.toLocaleString();
         document.getElementById('totalPrice').textContent = totalAmount.toLocaleString();
     }
 
-    document.getElementById('searchInput').addEventListener('input', function(e) {
-        const keyword = e.target.value.toLowerCase().trim();
-        
-        if (!keyword) {
-            renderList(allData);
-            return;
-        }
+    // イベントリスナー：検索窓とトグルスイッチ
+    document.getElementById('searchInput').addEventListener('input', applyFilters);
+    document.getElementById('filterSelectedToggle').addEventListener('change', applyFilters);
 
-        const filteredData = allData.filter(row => {
-            const umaName = (row['ウマ娘'] || '').toLowerCase();
-            const goodsName = (row['グッズ名'] || '').toLowerCase();
-            return umaName.includes(keyword) || goodsName.includes(keyword);
-        });
-
-        renderList(filteredData);
+    // --- モーダルダイアログの制御 ---
+    const modal = document.getElementById('confirmModal');
+    
+    document.getElementById('clearBtn').addEventListener('click', () => {
+        modal.classList.add('show');
+    });
+    
+    document.getElementById('modalCancel').addEventListener('click', () => {
+        modal.classList.remove('show');
+    });
+    
+    document.getElementById('modalOk').addEventListener('click', () => {
+        itemQuantities = {};
+        saveState();
+        updateSummary();
+        applyFilters();
+        modal.classList.remove('show');
+        showToast('すべての数量をリセットしました。');
     });
 
-    document.getElementById('clearBtn').addEventListener('click', function() {
-        if (confirm('すべての数量を 0 にリセットしてもよろしいですか？')) {
-            itemQuantities = {};
-            saveState();
-            updateSummary();
-            
-            const keyword = document.getElementById('searchInput').value.toLowerCase().trim();
-            if (keyword) {
-                const filteredData = allData.filter(row => {
-                    const umaName = (row['ウマ娘'] || '').toLowerCase();
-                    const goodsName = (row['グッズ名'] || '').toLowerCase();
-                    return umaName.includes(keyword) || goodsName.includes(keyword);
-                });
-                renderTable(filteredData);
-            } else {
-                renderTable(allData);
-            }
-        }
-    });
 </script>
 
 </body>
