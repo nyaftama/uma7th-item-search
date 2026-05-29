@@ -159,13 +159,15 @@
 
         @media screen and (max-width: 480px) {
             .summary-box { flex-direction: column; align-items: stretch; gap: 10px; }
-            .action-buttons { margin-left: 0; width: 100%; flex-direction: column;}
-            .clear-btn, .share-btn { width: 100%; justify-content: center; padding: 12px; }
+            /* 変更：縦並び(column)から横並び(row)に変更し、隙間を設定 */
+            .action-buttons { margin-left: 0; width: 100%; flex-direction: row; gap: 8px; }
+            /* 変更：width: 100% を flex: 1 にして横方向へ均等に2分割 */
+            .clear-btn, .share-btn { flex: 1; width: auto; justify-content: center; padding: 12px; font-size: 0.85rem; }
             .item-card { padding: 12px; }
-            .toast { width: 90%; white-space: normal; text-align: center; } 
+            .toast { width: 90%; white-space: normal; text-align: center; }
         }
         .loading { color: #666; text-align: center; padding: 20px; font-weight: bold; }
-        
+
         /* 画像生成用の一時コンテナ（画面外に隠す） */
         #renderContainer {
             position: absolute; top: -9999px; left: 0; z-index: -1000; pointer-events: none; opacity: 0;
