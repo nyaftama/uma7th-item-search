@@ -58,11 +58,6 @@
         .suggestion-item:hover, .suggestion-item:active { background-color: #f5f5f5; }
         .suggestion-icon-svg { margin-right: 10px; color: #666; opacity: 0.7; display: inline-block; vertical-align: middle; flex-shrink: 0; }
 
-        /* --- 検索ヒント --- */
-        .search-hint {
-            font-size: 0.8rem; color: #777; padding: 0 10px; margin-bottom: 15px;
-        }
-
         .filter-controls { padding: 0 10px; margin-bottom: 15px; }
         .checkbox-label {
             display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: bold;
@@ -197,7 +192,6 @@
         </div>
         <div id="suggestionsBox" class="suggestions-box"></div>
     </div>
-    <div class="search-hint">リスト上でウマ娘のバッジをタップしても絞り込めます。</div>
 
     <div class="filter-controls">
         <label class="checkbox-label">
@@ -238,7 +232,7 @@
 
 <div id="shareModal" class="modal-overlay">
     <div class="modal-content">
-        <p style="font-size: 0.9rem; color: #555;">画像を長押し（または右クリック）で保存し、<br>X（Twitter）に添付してシェアしてみましょう。</p>
+        <p style="font-size: 0.9rem; color: #555;">画像を長押し（または右クリック）で保存できます。</p>
         <div id="shareImageLoading" style="padding: 20px; color: #666;">画像を生成中...</div>
         <img id="shareImagePreview" src="" alt="購入リスト" style="width: 100%; border: 1px solid #ddd; border-radius: 8px; display: none;" />
         <div class="modal-actions">
