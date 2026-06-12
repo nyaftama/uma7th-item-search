@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2RNJ72H75W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-2RNJ72H75W');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ウマ娘 7th EVENT in TOKYO グッズ被弾チェッカー</title>
@@ -14,6 +24,7 @@
             background-color: #f0f2f5;
             color: #333;
         }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
@@ -21,596 +32,1059 @@
             padding-bottom: 80px;
         }
 
-        .header-meta { display: flex; justify-content: space-between; align-items: flex-end; padding: 0 10px; margin-bottom: 10px; }
-        .version-text { font-size: 0.85rem; color: #888; font-family: monospace; font-weight: bold; }
-        .credit-link { font-size: 0.75rem; color: #777; text-decoration: none; }
-        .credit-link strong { color: #555; }
-        .credit-link:hover { text-decoration: underline; color: #007bff; }
+        .header-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
 
-        h1.main-title { font-size: 1.4rem; margin: 0; padding: 0 10px; line-height: 1.3; }
-        .main-title .sub-title { font-size: 0.75em; color: #555; }
-        .eng-title { font-size: 0.65rem; color: #b0b0b0; text-transform: uppercase; padding: 0 10px; margin-top: 4px; margin-bottom: 15px; letter-spacing: 0.5px; }
-        
-        .search-box { position: relative; margin-bottom: 5px; padding: 0 10px; z-index: 150; }
-        .search-input-wrapper { position: relative; }
+        .version-text {
+            font-size: 0.85rem;
+            color: #888;
+            font-family: monospace;
+            font-weight: bold;
+        }
+
+        .credit-link {
+            font-size: 0.75rem;
+            color: #777;
+            text-decoration: none;
+        }
+
+        .credit-link strong {
+            color: #555;
+        }
+
+        .credit-link:hover {
+            text-decoration: underline;
+            color: #007bff;
+        }
+
+        h1.main-title {
+            font-size: 1.4rem;
+            margin: 0;
+            padding: 0 10px;
+            line-height: 1.3;
+        }
+
+        .main-title .sub-title {
+            font-size: 0.75em;
+            color: #555;
+        }
+
+        .eng-title {
+            font-size: 0.65rem;
+            color: #b0b0b0;
+            text-transform: uppercase;
+            padding: 0 10px;
+            margin-top: 4px;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .search-box {
+            position: relative;
+            margin-bottom: 5px;
+            padding: 0 10px;
+            z-index: 150;
+        }
+
+        .search-input-wrapper {
+            position: relative;
+        }
+
         .search-box input {
-            width: 100%; padding: 12px; padding-right: 40px;
-            font-size: 1rem; border: 2px solid #ddd; border-radius: 8px;
-            box-sizing: border-box; background-color: #fff;
+            width: 100%;
+            padding: 12px;
+            padding-right: 40px;
+            font-size: 1rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: #fff;
         }
-        .search-box input:focus { border-color: #4CAF50; outline: none; }
-        
+
+        .search-box input:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
         .clear-input-btn {
-            position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
-            background: none; border: none; font-size: 1.2rem; font-weight: bold;
-            color: #999; cursor: pointer; display: none; padding: 0 5px; touch-action: manipulation;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            display: none;
+            padding: 0 5px;
+            touch-action: manipulation;
         }
-        .clear-input-btn:hover { color: #555; }
+
+        .clear-input-btn:hover {
+            color: #555;
+        }
 
         .suggestions-box {
-            position: absolute; top: 100%; left: 10px; right: 10px;
-            background: #fff; border: 1px solid #ddd; border-top: none;
-            border-radius: 0 0 8px 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            max-height: 200px; overflow-y: auto;
+            position: absolute;
+            top: 100%;
+            left: 10px;
+            right: 10px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-top: none;
+            border-radius: 0 0 8px 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 200px;
+            overflow-y: auto;
         }
-        .suggestion-item { padding: 12px 15px; border-bottom: 1px solid #eee; cursor: pointer; font-size: 0.95rem; color: #333; display: flex; align-items: center; }
-        .suggestion-item:last-child { border-bottom: none; }
-        .suggestion-item:hover, .suggestion-item:active { background-color: #f5f5f5; }
-        .suggestion-icon-svg { margin-right: 10px; color: #666; opacity: 0.7; display: inline-block; vertical-align: middle; flex-shrink: 0; }
 
-        .filter-controls { padding: 0 10px; margin-bottom: 15px; }
-        .checkbox-label {
-            display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-size: 0.95rem; font-weight: bold;
-            background: #fff; padding: 8px 12px; border-radius: 8px; border: 1px solid #ccc; box-shadow: 0 1px 3px rgba(0,0,0,0.05); user-select: none;
+        .suggestion-item {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: #333;
+            display: flex;
+            align-items: center;
         }
-        .checkbox-label input[type="checkbox"] { width: 18px; height: 18px; cursor: pointer; }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+
+        .suggestion-item:hover,
+        .suggestion-item:active {
+            background-color: #f5f5f5;
+        }
+
+        .suggestion-icon-svg {
+            margin-right: 10px;
+            color: #666;
+            opacity: 0.7;
+            display: inline-block;
+            vertical-align: middle;
+            flex-shrink: 0;
+        }
+
+        .filter-controls {
+            padding: 0 10px;
+            margin-bottom: 15px;
+        }
+
+        .checkbox-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: bold;
+            background: #fff;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+            user-select: none;
+        }
+
+        .checkbox-label input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
 
         .summary-box {
-            position: sticky; top: 10px; z-index: 100; margin: 0 10px 20px 10px; padding: 15px;
-            background-color: #fff3e0; border-left: 5px solid #ff9800; border-radius: 8px;
-            font-size: 1.1rem; font-weight: bold; display: flex; gap: 15px;
-            flex-wrap: wrap; align-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.15); 
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+            margin: 0 10px 20px 10px;
+            padding: 15px;
+            background-color: #fff3e0;
+            border-left: 5px solid #ff9800;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
         }
-        .summary-value { color: #d32f2f; font-size: 1.3rem; }
-        
-        .action-buttons { display: flex; gap: 10px; margin-left: auto; flex-wrap: wrap; }
-        .clear-btn { padding: 10px 16px; background-color: #f44336; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold; }
-        .clear-btn:hover { background-color: #d32f2f; }
-        
+
+        .summary-value {
+            color: #d32f2f;
+            font-size: 1.3rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-left: auto;
+            flex-wrap: wrap;
+        }
+
+        .clear-btn {
+            padding: 10px 16px;
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .clear-btn:hover {
+            background-color: #d32f2f;
+        }
+
         /* --- Xシェアボタン --- */
         .share-btn {
-            padding: 10px 16px; background-color: #000; color: white; border: none; border-radius: 6px; 
-            cursor: pointer; font-size: 0.9rem; font-weight: bold; display: flex; align-items: center; gap: 6px;
+            padding: 10px 16px;
+            background-color: #000;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
-        .share-btn:hover { background-color: #333; }
-        
-        .badges-wrapper { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; align-items: center; }
-        .uma-badge {
-            display: inline-block; padding: 4px 10px; border-radius: 12px; color: #fff; font-size: 0.8rem; font-weight: bold;
-            text-shadow: 0px 1px 3px rgba(0,0,0,0.9); box-shadow: 0 2px 4px rgba(0,0,0,0.15); white-space: nowrap; cursor: pointer; transition: transform 0.1s, opacity 0.2s;
-        }
-        .uma-badge:hover { opacity: 0.8; transform: translateY(-1px); }
-        .uma-badge:active { transform: scale(0.95); }
-        .info-badge { display: inline-block; padding: 3px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; background-color: transparent; white-space: nowrap; }
-        .type-badge { border: 1.5px solid #2196f3; color: #2196f3; }
-        .trading-badge { border: 1.5px solid #e91e63; color: #e91e63; }
 
-        .item-list { display: flex; flex-direction: column; gap: 12px; padding: 0 10px; }
-        .item-card {
-            display: flex; flex-direction: column; gap: 12px; background-color: #fff;
-            border: 1px solid #e0e0e0; border-radius: 10px; padding: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.02); transition: background-color 0.2s;
+        .share-btn:hover {
+            background-color: #333;
         }
-        .item-card.checked-row { background-color: #f1f8e9; border-color: #a5d6a7; }
-        .card-top { width: 100%; }
-        .item-name { font-size: 1.05rem; font-weight: bold; line-height: 1.4; color: #222; }
-        .card-bottom { display: flex; justify-content: space-between; align-items: flex-end; gap: 15px; }
-        .card-bottom-left { flex: 1; }
-        .item-remarks { font-size: 0.8rem; color: #666; margin-bottom: 6px; }
-        .item-price { font-size: 1.25rem; font-weight: bold; color: #d32f2f; }
-        .card-bottom-right { display: flex; flex-direction: column; gap: 6px; width: 120px; transition: opacity 0.3s; }
-        .trading-locked .card-bottom-right { opacity: 0.35; }
-        
-        .qty-main-row { display: flex; align-items: center; justify-content: space-between; }
-        .qty-btn { width: 38px; height: 38px; font-size: 1.3rem; font-weight: bold; color: #333; background-color: #f8f9fa; border: 1px solid #ccc; border-radius: 6px; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0; touch-action: manipulation; transition: background-color 0.1s; }
-        .qty-btn:active:not(.is-disabled) { transform: scale(0.95); background-color: #e0e0e0; }
-        .qty-display { font-size: 1.2rem; font-weight: bold; text-align: center; flex: 1; }
-        .qty-sub-row { display: flex; gap: 6px; justify-content: space-between; }
-        .qty-btn-small { flex: 1; height: 28px; font-size: 0.75rem; font-weight: bold; color: white; border: none; border-radius: 4px; cursor: pointer; touch-action: manipulation; }
-        .qty-btn-small:active:not(.is-disabled) { transform: scale(0.95); }
-        .min-btn { background-color: #757575; }
-        .max-btn { background-color: #ff9800; }
-        .is-disabled { opacity: 0.4; cursor: not-allowed; }
+
+        .badges-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+            align-items: center;
+        }
+
+        .uma-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+            white-space: nowrap;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s;
+        }
+
+        .uma-badge:hover {
+            opacity: 0.8;
+            transform: translateY(-1px);
+        }
+
+        .uma-badge:active {
+            transform: scale(0.95);
+        }
+
+        .info-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            background-color: transparent;
+            white-space: nowrap;
+        }
+
+        .type-badge {
+            border: 1.5px solid #2196f3;
+            color: #2196f3;
+        }
+
+        .trading-badge {
+            border: 1.5px solid #e91e63;
+            color: #e91e63;
+        }
+
+        .item-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding: 0 10px;
+        }
+
+        .item-card {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+            transition: background-color 0.2s;
+        }
+
+        .item-card.checked-row {
+            background-color: #f1f8e9;
+            border-color: #a5d6a7;
+        }
+
+        .card-top {
+            width: 100%;
+        }
+
+        .item-name {
+            font-size: 1.05rem;
+            font-weight: bold;
+            line-height: 1.4;
+            color: #222;
+        }
+
+        .card-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .card-bottom-left {
+            flex: 1;
+        }
+
+        .item-remarks {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .item-price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #d32f2f;
+        }
+
+        .card-bottom-right {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            width: 120px;
+            transition: opacity 0.3s;
+        }
+
+        .trading-locked .card-bottom-right {
+            opacity: 0.35;
+        }
+
+        .qty-main-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .qty-btn {
+            width: 38px;
+            height: 38px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            touch-action: manipulation;
+            transition: background-color 0.1s;
+        }
+
+        .qty-btn:active:not(.is-disabled) {
+            transform: scale(0.95);
+            background-color: #e0e0e0;
+        }
+
+        .qty-display {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            flex: 1;
+        }
+
+        .qty-sub-row {
+            display: flex;
+            gap: 6px;
+            justify-content: space-between;
+        }
+
+        .qty-btn-small {
+            flex: 1;
+            height: 28px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            touch-action: manipulation;
+        }
+
+        .qty-btn-small:active:not(.is-disabled) {
+            transform: scale(0.95);
+        }
+
+        .min-btn {
+            background-color: #757575;
+        }
+
+        .max-btn {
+            background-color: #ff9800;
+        }
+
+        .is-disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
 
         /* --- ページトップボタン --- */
         .back-to-top {
-            position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px;
-            background-color: rgba(0,0,0,0.6); color: white; border: none; border-radius: 50%;
-            font-size: 1.2rem; cursor: pointer; z-index: 900;
-            opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            z-index: 900;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
         }
-        .back-to-top.show { opacity: 1; visibility: visible; }
-        .back-to-top:hover { background-color: rgba(0,0,0,0.8); }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
 
         .toast {
-            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
-            background: rgba(30, 30, 30, 0.9); color: white; padding: 12px 24px; border-radius: 30px; font-size: 0.9rem; font-weight: bold;
-            opacity: 0; pointer-events: none; transition: opacity 0.3s, transform 0.3s; z-index: 1000; white-space: nowrap; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(30, 30, 30, 0.9);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            z-index: 1000;
+            white-space: nowrap;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }
-        .toast.show { opacity: 1; transform: translateX(-50%) translateY(-10px); }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
+        }
+
         .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.6); display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none; transition: opacity 0.2s; z-index: 2000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s;
+            z-index: 2000;
         }
-        .modal-overlay.show { opacity: 1; pointer-events: auto; }
-        .modal-content { background: #fff; padding: 25px; border-radius: 12px; width: 90%; max-width: 400px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); text-align: center; max-height: 90vh; overflow-y: auto; }
-        .modal-content p { font-size: 1.05rem; font-weight: bold; margin-bottom: 20px; line-height: 1.5;}
-        .modal-actions { display: flex; gap: 10px; justify-content: center; margin-top: 15px;}
-        .modal-btn { flex: 1; padding: 12px; border: none; border-radius: 6px; font-size: 1rem; font-weight: bold; cursor: pointer; text-decoration: none;}
-        .modal-btn.cancel { background: #e0e0e0; color: #333; }
-        .modal-btn.ok { background: #f44336; color: white; }
-        .modal-btn.twitter { background: #000; color: white; display: flex; align-items: center; justify-content: center; }
+
+        .modal-overlay.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            background: #fff;
+            padding: 25px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-content p {
+            font-size: 1.05rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .modal-btn.cancel {
+            background: #e0e0e0;
+            color: #333;
+        }
+
+        .modal-btn.ok {
+            background: #f44336;
+            color: white;
+        }
+
+        .modal-btn.twitter {
+            background: #000;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         @media screen and (max-width: 480px) {
-            .summary-box { flex-direction: column; align-items: stretch; gap: 10px; }
+            .summary-box {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+
             /* 変更：縦並び(column)から横並び(row)に変更し、隙間を設定 */
-            .action-buttons { margin-left: 0; width: 100%; flex-direction: row; gap: 8px; }
+            .action-buttons {
+                margin-left: 0;
+                width: 100%;
+                flex-direction: row;
+                gap: 8px;
+            }
+
             /* 変更：width: 100% を flex: 1 にして横方向へ均等に2分割 */
-            .clear-btn, .share-btn { flex: 1; width: auto; justify-content: center; padding: 12px; font-size: 0.85rem; }
-            .item-card { padding: 12px; }
-            .toast { width: 90%; white-space: normal; text-align: center; }
+            .clear-btn,
+            .share-btn {
+                flex: 1;
+                width: auto;
+                justify-content: center;
+                padding: 12px;
+                font-size: 0.85rem;
+            }
+
+            .item-card {
+                padding: 12px;
+            }
+
+            .toast {
+                width: 90%;
+                white-space: normal;
+                text-align: center;
+            }
         }
-        .loading { color: #666; text-align: center; padding: 20px; font-weight: bold; }
+
+        .loading {
+            color: #666;
+            text-align: center;
+            padding: 20px;
+            font-weight: bold;
+        }
 
         /* 画像生成用の一時コンテナ（画面外に隠す） */
         #renderContainer {
-            position: absolute; top: -9999px; left: 0; z-index: -1000; pointer-events: none; opacity: 0;
+            position: absolute;
+            top: -9999px;
+            left: 0;
+            z-index: -1000;
+            pointer-events: none;
+            opacity: 0;
         }
     </style>
 </head>
+
 <body>
 
-<div class="container">
-    <div class="header-meta">
-        <span class="version-text">v0.93</span>
-        <a href="https://x.com/nyaftama" target="_blank" rel="noopener noreferrer" class="credit-link">
-            作った人: <strong>@nyaftama</strong>
-        </a>
-    </div>
-
-    <h1 class="main-title">
-        <span class="sub-title">ウマ娘 7th EVENT in TOKYO</span><br>
-        グッズ被弾チェッカー
-    </h1>
-    <div class="eng-title">UMAMUSUME 7TH EVENT IN TOKYO <br> MERCH DAMAGE CHECKER</div>
-    
-    <div class="search-box">
-        <div class="search-input-wrapper">
-            <input type="text" id="searchInput" placeholder="ウマ娘の名前、グッズ名を入力" autocomplete="off">
-            <button id="clearInputBtn" class="clear-input-btn" aria-label="クリア">✕</button>
-        </div>
-        <div id="suggestionsBox" class="suggestions-box"></div>
-    </div>
-
-    <div class="filter-controls">
-        <label class="checkbox-label">
-            <input type="checkbox" id="filterSelectedToggle">
-            <span>数量1以上のグッズのみ表示</span>
-        </label>
-    </div>
-
-    <div class="summary-box">
-        <div>総購入点数: <span id="itemCount" class="summary-value">0</span> 点</div>
-        <div>合計被弾額: <span id="totalPrice" class="summary-value">0</span> 円</div>
-        
-        <div class="action-buttons">
-            <button class="share-btn" id="openShareBtn">
-                画像でシェア
-            </button>
-            <button class="clear-btn" id="clearBtn">数量をリセット</button>
-        </div>
-    </div>
-
-    <div id="loading" class="loading">データを読み込んでいます...</div>
-    <div id="itemList" class="item-list" style="display: none;"></div>
-</div>
-
-<button id="backToTopBtn" class="back-to-top" aria-label="トップへ戻る">▲</button>
-
-<div id="toast" class="toast"></div>
-
-<div id="confirmModal" class="modal-overlay">
-    <div class="modal-content">
-        <p>すべての数量を 0 にリセットしてもよろしいですか？</p>
-        <div class="modal-actions">
-            <button id="modalCancel" class="modal-btn cancel">キャンセル</button>
-            <button id="modalOk" class="modal-btn ok">リセット</button>
-        </div>
-    </div>
-</div>
-
-<div id="shareModal" class="modal-overlay">
-    <div class="modal-content">
-        <p style="font-size: 0.9rem; color: #555;">画像を長押し（または右クリック）で保存できます。</p>
-        <div id="shareImageLoading" style="padding: 20px; color: #666;">画像を生成中...</div>
-        <img id="shareImagePreview" src="" alt="購入リスト" style="width: 100%; border: 1px solid #ddd; border-radius: 8px; display: none;" />
-        <div class="modal-actions">
-            <button id="shareCloseBtn" class="modal-btn cancel">閉じる</button>
-            <a id="shareTwitterBtn" class="modal-btn twitter" href="#" target="_blank" rel="noopener noreferrer">
-                Xでポストする
+    <div class="container">
+        <div class="header-meta">
+            <span class="version-text">v0.93</span>
+            <a href="https://x.com/nyaftama" target="_blank" rel="noopener noreferrer" class="credit-link">
+                作った人: <strong>@nyaftama</strong>
             </a>
         </div>
+
+        <h1 class="main-title">
+            <span class="sub-title">ウマ娘 7th EVENT in TOKYO</span><br>
+            グッズ被弾チェッカー
+        </h1>
+        <div class="eng-title">UMAMUSUME 7TH EVENT IN TOKYO <br> MERCH DAMAGE CHECKER</div>
+
+        <div class="search-box">
+            <div class="search-input-wrapper">
+                <input type="text" id="searchInput" placeholder="ウマ娘の名前、グッズ名を入力" autocomplete="off">
+                <button id="clearInputBtn" class="clear-input-btn" aria-label="クリア">✕</button>
+            </div>
+            <div id="suggestionsBox" class="suggestions-box"></div>
+        </div>
+
+        <div class="filter-controls">
+            <label class="checkbox-label">
+                <input type="checkbox" id="filterSelectedToggle">
+                <span>数量1以上のグッズのみ表示</span>
+            </label>
+        </div>
+
+        <div class="summary-box">
+            <div>総購入点数: <span id="itemCount" class="summary-value">0</span> 点</div>
+            <div>合計被弾額: <span id="totalPrice" class="summary-value">0</span> 円</div>
+
+            <div class="action-buttons">
+                <button class="share-btn" id="openShareBtn">
+                    画像でシェア
+                </button>
+                <button class="clear-btn" id="clearBtn">数量をリセット</button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">データを読み込んでいます...</div>
+        <div id="itemList" class="item-list" style="display: none;"></div>
     </div>
-</div>
 
-<div id="renderContainer"></div>
+    <button id="backToTopBtn" class="back-to-top" aria-label="トップへ戻る">▲</button>
 
-<script>
-    const itemsCsvPath = './items.csv';
-    const colorCsvPath = './color.csv'; 
-    const STORAGE_KEY = 'umamusume_7th_goods_quantities_v5';
-    
-    let allData = [];
-    let colorMap = {}; 
-    let itemQuantities = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
-    let searchKeywordsArray = [];
+    <div id="toast" class="toast"></div>
 
-    // --- UIコンポーネント ---
-    const searchInput = document.getElementById('searchInput');
-    const clearInputBtn = document.getElementById('clearInputBtn');
-    const suggestionsBox = document.getElementById('suggestionsBox');
-    const backToTopBtn = document.getElementById('backToTopBtn');
+    <div id="confirmModal" class="modal-overlay">
+        <div class="modal-content">
+            <p>すべての数量を 0 にリセットしてもよろしいですか？</p>
+            <div class="modal-actions">
+                <button id="modalCancel" class="modal-btn cancel">キャンセル</button>
+                <button id="modalOk" class="modal-btn ok">リセット</button>
+            </div>
+        </div>
+    </div>
 
-    let toastTimeout;
-    function showToast(msg) {
-        const toast = document.getElementById('toast');
-        toast.textContent = msg;
-        toast.classList.add('show');
-        clearTimeout(toastTimeout);
-        toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
-    }
+    <div id="shareModal" class="modal-overlay">
+        <div class="modal-content">
+            <p style="font-size: 0.9rem; color: #555;">画像を長押し（または右クリック）で保存できます。</p>
+            <div id="shareImageLoading" style="padding: 20px; color: #666;">画像を生成中...</div>
+            <img id="shareImagePreview" src="" alt="購入リスト"
+                style="width: 100%; border: 1px solid #ddd; border-radius: 8px; display: none;" />
+            <div class="modal-actions">
+                <button id="shareCloseBtn" class="modal-btn cancel">閉じる</button>
+                <a id="shareTwitterBtn" class="modal-btn twitter" href="#" target="_blank" rel="noopener noreferrer">
+                    Xでポストする
+                </a>
+            </div>
+        </div>
+    </div>
 
-    // スクロール検知でトップへ戻るボタンを表示
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add('show');
-        } else {
-            backToTopBtn.classList.remove('show');
+    <div id="renderContainer"></div>
+
+    <script>
+        const itemsCsvPath = './items.csv';
+        const colorCsvPath = './color.csv';
+        const STORAGE_KEY = 'umamusume_7th_goods_quantities_v5';
+
+        let allData = [];
+        let colorMap = {};
+        let itemQuantities = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+        let searchKeywordsArray = [];
+
+        // --- UIコンポーネント ---
+        const searchInput = document.getElementById('searchInput');
+        const clearInputBtn = document.getElementById('clearInputBtn');
+        const suggestionsBox = document.getElementById('suggestionsBox');
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        let toastTimeout;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => toast.classList.remove('show'), 2500);
         }
-    });
-    backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
 
-    window.setSearchTarget = function(name) {
-        searchInput.value = name;
-        clearInputBtn.style.display = 'block';
-        suggestionsBox.innerHTML = '';
-        applyFilters(); 
-        window.scrollTo({ top: 0, behavior: 'smooth' }); 
-        showToast(`${name} で絞り込みました`);
-    };
+        // スクロール検知でトップへ戻るボタンを表示
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
 
-    Papa.parse(colorCsvPath, {
-        download: true, header: true, skipEmptyLines: true,
-        complete: function(results) {
-            results.data.forEach(row => {
-                if(row.name && row.main_color) {
-                    colorMap[row.name] = { main: row.main_color, sub: row.sub_color || '#cccccc' };
-                }
-            });
-            loadItemsData();
-        },
-        error: function(err) {
-            console.warn('color.csvの読み込みに失敗しました。', err);
-            loadItemsData();
-        }
-    });
+        window.setSearchTarget = function (name) {
+            searchInput.value = name;
+            clearInputBtn.style.display = 'block';
+            suggestionsBox.innerHTML = '';
+            applyFilters();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            showToast(`${name} で絞り込みました`);
+        };
 
-    function loadItemsData() {
-        Papa.parse(itemsCsvPath, {
+        Papa.parse(colorCsvPath, {
             download: true, header: true, skipEmptyLines: true,
-            complete: function(results) {
-                allData = results.data;
-                const keywordsSet = new Set();
-                allData.forEach(row => {
-                    if (row['グッズ名']) keywordsSet.add(row['グッズ名'].trim());
-                    if (row['ウマ娘']) {
-                        row['ウマ娘'].split(',').forEach(n => keywordsSet.add(n.trim()));
+            complete: function (results) {
+                results.data.forEach(row => {
+                    if (row.name && row.main_color) {
+                        colorMap[row.name] = { main: row.main_color, sub: row.sub_color || '#cccccc' };
                     }
                 });
-                searchKeywordsArray = Array.from(keywordsSet).filter(k => k);
-
-                applyFilters();
-                updateSummary();
-                document.getElementById('loading').style.display = 'none';
-                document.getElementById('itemList').style.display = 'flex';
+                loadItemsData();
             },
-            error: function(err) {
-                document.getElementById('loading').innerText = 'グッズデータの読み込みに失敗しました。';
+            error: function (err) {
+                console.warn('color.csvの読み込みに失敗しました。', err);
+                loadItemsData();
             }
         });
-    }
 
-    searchInput.addEventListener('input', function(e) {
-        const keyword = e.target.value.toLowerCase().trim();
-        clearInputBtn.style.display = keyword ? 'block' : 'none';
-        applyFilters();
-        showSuggestions(keyword);
-    });
+        function loadItemsData() {
+            Papa.parse(itemsCsvPath, {
+                download: true, header: true, skipEmptyLines: true,
+                complete: function (results) {
+                    allData = results.data;
+                    const keywordsSet = new Set();
+                    allData.forEach(row => {
+                        if (row['グッズ名']) keywordsSet.add(row['グッズ名'].trim());
+                        if (row['ウマ娘']) {
+                            row['ウマ娘'].split(',').forEach(n => keywordsSet.add(n.trim()));
+                        }
+                    });
+                    searchKeywordsArray = Array.from(keywordsSet).filter(k => k);
 
-    clearInputBtn.addEventListener('click', () => {
-        searchInput.value = '';
-        clearInputBtn.style.display = 'none';
-        suggestionsBox.innerHTML = '';
-        applyFilters();
-        searchInput.focus();
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.search-box')) suggestionsBox.innerHTML = '';
-    });
-
-    function showSuggestions(keyword) {
-        suggestionsBox.innerHTML = '';
-        if (!keyword) return;
-
-        const matches = searchKeywordsArray.filter(k => k.toLowerCase().includes(keyword));
-        const topMatches = matches.slice(0, 3);
-        if (topMatches.length === 0) return;
-
-        topMatches.forEach(match => {
-            const div = document.createElement('div');
-            div.className = 'suggestion-item';
-            
-            const svgIconWrapper = document.createElement('span');
-            svgIconWrapper.className = 'suggestion-icon-svg';
-            svgIconWrapper.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>`;
-            
-            div.appendChild(svgIconWrapper);
-            div.appendChild(document.createTextNode(match));
-            
-            div.addEventListener('click', () => setSearchTarget(match));
-            suggestionsBox.appendChild(div);
-        });
-    }
-
-    function getBadgeColor(name) {
-        let hash = 0;
-        for (let i = 0; i < name.length; i++) { hash = name.charCodeAt(i) + ((hash << 5) - hash); }
-        return `hsl(${Math.abs(hash) % 360}, 70%, 40%)`;
-    }
-
-    function createBadgesHtml(nameStr) {
-        if (!nameStr) return '';
-        return nameStr.split(',').map(name => {
-            const cleanName = name.trim();
-            if (!cleanName) return '';
-            let bgStyle = colorMap[cleanName] 
-                ? `background: linear-gradient(135deg, ${colorMap[cleanName].main} 75%, ${colorMap[cleanName].sub} 25%);` 
-                : `background-color: ${getBadgeColor(cleanName)};`;
-            return `<span class="uma-badge" style="${bgStyle}" onclick="setSearchTarget('${cleanName}')">${cleanName}</span>`;
-        }).join('');
-    }
-
-    function getActiveTradingItems() {
-        const active = new Set();
-        allData.forEach(row => {
-            const id = row['ID'];
-            if (itemQuantities[id] > 0 && String(row['トレーディング']).toUpperCase() === 'TRUE') active.add(row['グッズ名']);
-        });
-        return active;
-    }
-
-    function applyFilters() {
-        const keyword = searchInput.value.toLowerCase().trim();
-        const onlySelected = document.getElementById('filterSelectedToggle').checked;
-        
-        const filteredData = allData.filter(row => {
-            const id = row['ID'];
-            const qty = itemQuantities[id] || 0;
-            if (onlySelected && qty <= 0) return false;
-            if (keyword) {
-                const umaName = (row['ウマ娘'] || '').toLowerCase();
-                const goodsName = (row['グッズ名'] || '').toLowerCase();
-                return umaName.includes(keyword) || goodsName.includes(keyword);
-            }
-            return true;
-        });
-        renderList(filteredData);
-    }
-
-    function renderList(data) {
-        const listContainer = document.getElementById('itemList');
-        listContainer.innerHTML = ''; 
-        if (data.length === 0) {
-            listContainer.innerHTML = `<div style="text-align:center; padding:20px; color:#666;">該当するグッズがありません</div>`;
-            return;
+                    applyFilters();
+                    updateSummary();
+                    document.getElementById('loading').style.display = 'none';
+                    document.getElementById('itemList').style.display = 'flex';
+                },
+                error: function (err) {
+                    document.getElementById('loading').innerText = 'グッズデータの読み込みに失敗しました。';
+                }
+            });
         }
 
-        const activeTradingItems = getActiveTradingItems();
-
-        data.forEach(row => {
-            const rowId = row['ID']; 
-            if (!rowId) return; 
-
-            let currentQty = itemQuantities[rowId] || 0;
-            const maxLimitStr = row['最大数量'];
-            const maxLimit = maxLimitStr ? parseInt(maxLimitStr, 10) : 99;
-            const isTrading = String(row['トレーディング']).toUpperCase() === 'TRUE';
-            const isTradingLocked = (isTrading && currentQty === 0 && activeTradingItems.has(row['グッズ名']));
-
-            const card = document.createElement('div');
-            card.className = 'item-card';
-            if (currentQty > 0) card.classList.add('checked-row');
-            if (isTradingLocked) card.classList.add('trading-locked');
-
-            const topDiv = document.createElement('div');
-            topDiv.className = 'card-top';
-            const badgesWrapper = document.createElement('div');
-            badgesWrapper.className = 'badges-wrapper';
-            if (row['ウマ娘']) badgesWrapper.innerHTML += createBadgesHtml(row['ウマ娘']);
-            if (row['入手タイプ']) badgesWrapper.innerHTML += `<span class="info-badge type-badge">${row['入手タイプ']}</span>`;
-            if (isTrading) badgesWrapper.innerHTML += `<span class="info-badge trading-badge">トレーディング</span>`;
-            topDiv.appendChild(badgesWrapper);
-
-            const nameDiv = document.createElement('div');
-            nameDiv.className = 'item-name';
-            nameDiv.textContent = row['グッズ名'] || '';
-            topDiv.appendChild(nameDiv);
-            card.appendChild(topDiv);
-
-            const bottomDiv = document.createElement('div');
-            bottomDiv.className = 'card-bottom';
-            const bottomLeft = document.createElement('div');
-            bottomLeft.className = 'card-bottom-left';
-            if (row['備考']) {
-                const remarksDiv = document.createElement('div');
-                remarksDiv.className = 'item-remarks';
-                remarksDiv.textContent = row['備考'];
-                bottomLeft.appendChild(remarksDiv);
-            }
-            const priceDiv = document.createElement('div');
-            priceDiv.className = 'item-price';
-            const priceNum = parseInt((row['金額'] || '0').toString().replace(/[^0-9]/g, ''), 10) || 0;
-            priceDiv.textContent = priceNum.toLocaleString() + '円';
-            bottomLeft.appendChild(priceDiv);
-            bottomDiv.appendChild(bottomLeft);
-
-            const bottomRight = document.createElement('div');
-            bottomRight.className = 'card-bottom-right';
-            const qtyMainRow = document.createElement('div');
-            qtyMainRow.className = 'qty-main-row';
-            const minusBtn = document.createElement('button'); minusBtn.className = 'qty-btn'; minusBtn.textContent = '−';
-            const qtySpan = document.createElement('span'); qtySpan.className = 'qty-display'; qtySpan.textContent = currentQty;
-            const plusBtn = document.createElement('button'); plusBtn.className = 'qty-btn'; plusBtn.textContent = '＋';
-            qtyMainRow.appendChild(minusBtn); qtyMainRow.appendChild(qtySpan); qtyMainRow.appendChild(plusBtn);
-            bottomRight.appendChild(qtyMainRow);
-
-            const qtySubRow = document.createElement('div');
-            qtySubRow.className = 'qty-sub-row';
-            const minBtn = document.createElement('button'); minBtn.className = 'qty-btn-small min-btn'; minBtn.textContent = 'MIN';
-            qtySubRow.appendChild(minBtn);
-            let maxBtn = null;
-            if (maxLimitStr && maxLimit > 0) {
-                maxBtn = document.createElement('button'); maxBtn.className = 'qty-btn-small max-btn'; maxBtn.textContent = 'MAX';
-                qtySubRow.appendChild(maxBtn);
-            }
-            bottomRight.appendChild(qtySubRow);
-            bottomDiv.appendChild(bottomRight);
-            card.appendChild(bottomDiv);
-
-            const updateButtonsState = () => {
-                minusBtn.classList.toggle('is-disabled', currentQty <= 0 || isTradingLocked);
-                minBtn.classList.toggle('is-disabled', currentQty <= 0 || isTradingLocked);
-                plusBtn.classList.toggle('is-disabled', currentQty >= maxLimit || isTradingLocked);
-                if (maxBtn) maxBtn.classList.toggle('is-disabled', currentQty >= maxLimit || isTradingLocked);
-            };
-            updateButtonsState();
-
-            const tryChangeQty = (newQty, btnElement) => {
-                if (isTradingLocked) { showToast('同一のトレーディング商品が追加されています。'); return; }
-                if (btnElement.classList.contains('is-disabled')) {
-                    if (newQty > currentQty) showToast('購入制限数に達しています。');
-                    if (newQty < currentQty) showToast('数量はこれ以上減らせません。');
-                    return;
-                }
-                currentQty = newQty;
-                if (currentQty === 0) delete itemQuantities[rowId];
-                else itemQuantities[rowId] = currentQty;
-                
-                saveState(); updateSummary();
-                const onlySelected = document.getElementById('filterSelectedToggle').checked;
-                if (isTrading || (onlySelected && currentQty === 0)) applyFilters();
-                else {
-                    qtySpan.textContent = currentQty;
-                    updateButtonsState();
-                    card.classList.toggle('checked-row', currentQty > 0);
-                }
-            };
-
-            minusBtn.addEventListener('click', function() { tryChangeQty(currentQty - 1, this); });
-            plusBtn.addEventListener('click', function() { tryChangeQty(currentQty + 1, this); });
-            minBtn.addEventListener('click', function() { tryChangeQty(0, this); });
-            if (maxBtn) maxBtn.addEventListener('click', function() { tryChangeQty(maxLimit, this); });
-            
-            listContainer.appendChild(card);
-        });
-    }
-
-    function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(itemQuantities)); }
-
-    function updateSummary() {
-        let totalAmount = 0; let totalItems = 0;
-        allData.forEach(row => {
-            const qty = itemQuantities[row['ID']] || 0;
-            if (qty > 0) {
-                const priceNum = parseInt((row['金額'] || '0').toString().replace(/[^0-9]/g, ''), 10) || 0;
-                totalAmount += (priceNum * qty); totalItems += qty;
-            }
-        });
-        document.getElementById('itemCount').textContent = totalItems.toLocaleString();
-        document.getElementById('totalPrice').textContent = totalAmount.toLocaleString();
-    }
-
-    document.getElementById('filterSelectedToggle').addEventListener('change', applyFilters);
-
-    // --- モーダル制御 ---
-    const confirmModal = document.getElementById('confirmModal');
-    document.getElementById('clearBtn').addEventListener('click', () => confirmModal.classList.add('show'));
-    document.getElementById('modalCancel').addEventListener('click', () => confirmModal.classList.remove('show'));
-    document.getElementById('modalOk').addEventListener('click', () => {
-        itemQuantities = {}; saveState(); updateSummary(); applyFilters();
-        confirmModal.classList.remove('show'); showToast('すべての数量をリセットしました。');
-    });
-
-    // --- シェア画像生成機能 ---
-    const shareModal = document.getElementById('shareModal');
-    const shareImagePreview = document.getElementById('shareImagePreview');
-    const shareImageLoading = document.getElementById('shareImageLoading');
-
-    document.getElementById('openShareBtn').addEventListener('click', async () => {
-        let totalItems = 0; let totalAmount = 0;
-        const purchaseItems = [];
-        
-        allData.forEach(row => {
-            const qty = itemQuantities[row['ID']] || 0;
-            if (qty > 0) {
-                const priceNum = parseInt((row['金額'] || '0').toString().replace(/[^0-9]/g, ''), 10) || 0;
-                totalAmount += (priceNum * qty);
-                totalItems += qty;
-                purchaseItems.push({
-                    uma: row['ウマ娘'] || '',
-                    name: row['グッズ名'] || '',
-                    qty: qty,
-                    price: priceNum
-                });
-            }
+        searchInput.addEventListener('input', function (e) {
+            const keyword = e.target.value.toLowerCase().trim();
+            clearInputBtn.style.display = keyword ? 'block' : 'none';
+            applyFilters();
+            showSuggestions(keyword);
         });
 
-        if (totalItems === 0) {
-            showToast('カートが空です。グッズを追加してください。');
-            return;
+        clearInputBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            clearInputBtn.style.display = 'none';
+            suggestionsBox.innerHTML = '';
+            applyFilters();
+            searchInput.focus();
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-box')) suggestionsBox.innerHTML = '';
+        });
+
+        function showSuggestions(keyword) {
+            suggestionsBox.innerHTML = '';
+            if (!keyword) return;
+
+            const matches = searchKeywordsArray.filter(k => k.toLowerCase().includes(keyword));
+            const topMatches = matches.slice(0, 3);
+            if (topMatches.length === 0) return;
+
+            topMatches.forEach(match => {
+                const div = document.createElement('div');
+                div.className = 'suggestion-item';
+
+                const svgIconWrapper = document.createElement('span');
+                svgIconWrapper.className = 'suggestion-icon-svg';
+                svgIconWrapper.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/></svg>`;
+
+                div.appendChild(svgIconWrapper);
+                div.appendChild(document.createTextNode(match));
+
+                div.addEventListener('click', () => setSearchTarget(match));
+                suggestionsBox.appendChild(div);
+            });
         }
 
-        // モーダルを開きローディング表示
-        shareModal.classList.add('show');
-        shareImageLoading.style.display = 'block';
-        shareImagePreview.style.display = 'none';
+        function getBadgeColor(name) {
+            let hash = 0;
+            for (let i = 0; i < name.length; i++) { hash = name.charCodeAt(i) + ((hash << 5) - hash); }
+            return `hsl(${Math.abs(hash) % 360}, 70%, 40%)`;
+        }
 
-        // レシート用HTMLの組み立て
-        let html = `
+        function createBadgesHtml(nameStr) {
+            if (!nameStr) return '';
+            return nameStr.split(',').map(name => {
+                const cleanName = name.trim();
+                if (!cleanName) return '';
+                let bgStyle = colorMap[cleanName]
+                    ? `background: linear-gradient(135deg, ${colorMap[cleanName].main} 75%, ${colorMap[cleanName].sub} 25%);`
+                    : `background-color: ${getBadgeColor(cleanName)};`;
+                return `<span class="uma-badge" style="${bgStyle}" onclick="setSearchTarget('${cleanName}')">${cleanName}</span>`;
+            }).join('');
+        }
+
+        function getActiveTradingItems() {
+            const active = new Set();
+            allData.forEach(row => {
+                const id = row['ID'];
+                if (itemQuantities[id] > 0 && String(row['トレーディング']).toUpperCase() === 'TRUE') active.add(row['グッズ名']);
+            });
+            return active;
+        }
+
+        function applyFilters() {
+            const keyword = searchInput.value.toLowerCase().trim();
+            const onlySelected = document.getElementById('filterSelectedToggle').checked;
+
+            const filteredData = allData.filter(row => {
+                const id = row['ID'];
+                const qty = itemQuantities[id] || 0;
+                if (onlySelected && qty <= 0) return false;
+                if (keyword) {
+                    const umaName = (row['ウマ娘'] || '').toLowerCase();
+                    const goodsName = (row['グッズ名'] || '').toLowerCase();
+                    return umaName.includes(keyword) || goodsName.includes(keyword);
+                }
+                return true;
+            });
+            renderList(filteredData);
+        }
+
+        function renderList(data) {
+            const listContainer = document.getElementById('itemList');
+            listContainer.innerHTML = '';
+            if (data.length === 0) {
+                listContainer.innerHTML = `<div style="text-align:center; padding:20px; color:#666;">該当するグッズがありません</div>`;
+                return;
+            }
+
+            const activeTradingItems = getActiveTradingItems();
+
+            data.forEach(row => {
+                const rowId = row['ID'];
+                if (!rowId) return;
+
+                let currentQty = itemQuantities[rowId] || 0;
+                const maxLimitStr = row['最大数量'];
+                const maxLimit = maxLimitStr ? parseInt(maxLimitStr, 10) : 99;
+                const isTrading = String(row['トレーディング']).toUpperCase() === 'TRUE';
+                const isTradingLocked = (isTrading && currentQty === 0 && activeTradingItems.has(row['グッズ名']));
+
+                const card = document.createElement('div');
+                card.className = 'item-card';
+                if (currentQty > 0) card.classList.add('checked-row');
+                if (isTradingLocked) card.classList.add('trading-locked');
+
+                const topDiv = document.createElement('div');
+                topDiv.className = 'card-top';
+                const badgesWrapper = document.createElement('div');
+                badgesWrapper.className = 'badges-wrapper';
+                if (row['ウマ娘']) badgesWrapper.innerHTML += createBadgesHtml(row['ウマ娘']);
+                if (row['入手タイプ']) badgesWrapper.innerHTML += `<span class="info-badge type-badge">${row['入手タイプ']}</span>`;
+                if (isTrading) badgesWrapper.innerHTML += `<span class="info-badge trading-badge">トレーディング</span>`;
+                topDiv.appendChild(badgesWrapper);
+
+                const nameDiv = document.createElement('div');
+                nameDiv.className = 'item-name';
+                nameDiv.textContent = row['グッズ名'] || '';
+                topDiv.appendChild(nameDiv);
+                card.appendChild(topDiv);
+
+                const bottomDiv = document.createElement('div');
+                bottomDiv.className = 'card-bottom';
+                const bottomLeft = document.createElement('div');
+                bottomLeft.className = 'card-bottom-left';
+                if (row['備考']) {
+                    const remarksDiv = document.createElement('div');
+                    remarksDiv.className = 'item-remarks';
+                    remarksDiv.textContent = row['備考'];
+                    bottomLeft.appendChild(remarksDiv);
+                }
+                const priceDiv = document.createElement('div');
+                priceDiv.className = 'item-price';
+                const priceNum = parseInt((row['金額'] || '0').toString().replace(/[^0-9]/g, ''), 10) || 0;
+                priceDiv.textContent = priceNum.toLocaleString() + '円';
+                bottomLeft.appendChild(priceDiv);
+                bottomDiv.appendChild(bottomLeft);
+
+                const bottomRight = document.createElement('div');
+                bottomRight.className = 'card-bottom-right';
+                const qtyMainRow = document.createElement('div');
+                qtyMainRow.className = 'qty-main-row';
+                const minusBtn = document.createElement('button'); minusBtn.className = 'qty-btn'; minusBtn.textContent = '−';
+                const qtySpan = document.createElement('span'); qtySpan.className = 'qty-display'; qtySpan.textContent = currentQty;
+                const plusBtn = document.createElement('button'); plusBtn.className = 'qty-btn'; plusBtn.textContent = '＋';
+                qtyMainRow.appendChild(minusBtn); qtyMainRow.appendChild(qtySpan); qtyMainRow.appendChild(plusBtn);
+                bottomRight.appendChild(qtyMainRow);
+
+                const qtySubRow = document.createElement('div');
+                qtySubRow.className = 'qty-sub-row';
+                const minBtn = document.createElement('button'); minBtn.className = 'qty-btn-small min-btn'; minBtn.textContent = 'MIN';
+                qtySubRow.appendChild(minBtn);
+                let maxBtn = null;
+                if (maxLimitStr && maxLimit > 0) {
+                    maxBtn = document.createElement('button'); maxBtn.className = 'qty-btn-small max-btn'; maxBtn.textContent = 'MAX';
+                    qtySubRow.appendChild(maxBtn);
+                }
+                bottomRight.appendChild(qtySubRow);
+                bottomDiv.appendChild(bottomRight);
+                card.appendChild(bottomDiv);
+
+                const updateButtonsState = () => {
+                    minusBtn.classList.toggle('is-disabled', currentQty <= 0 || isTradingLocked);
+                    minBtn.classList.toggle('is-disabled', currentQty <= 0 || isTradingLocked);
+                    plusBtn.classList.toggle('is-disabled', currentQty >= maxLimit || isTradingLocked);
+                    if (maxBtn) maxBtn.classList.toggle('is-disabled', currentQty >= maxLimit || isTradingLocked);
+                };
+                updateButtonsState();
+
+                const tryChangeQty = (newQty, btnElement) => {
+                    if (isTradingLocked) { showToast('同一のトレーディング商品が追加されています。'); return; }
+                    if (btnElement.classList.contains('is-disabled')) {
+                        if (newQty > currentQty) showToast('購入制限数に達しています。');
+                        if (newQty < currentQty) showToast('数量はこれ以上減らせません。');
+                        return;
+                    }
+                    currentQty = newQty;
+                    if (currentQty === 0) delete itemQuantities[rowId];
+                    else itemQuantities[rowId] = currentQty;
+
+                    saveState(); updateSummary();
+                    const onlySelected = document.getElementById('filterSelectedToggle').checked;
+                    if (isTrading || (onlySelected && currentQty === 0)) applyFilters();
+                    else {
+                        qtySpan.textContent = currentQty;
+                        updateButtonsState();
+                        card.classList.toggle('checked-row', currentQty > 0);
+                    }
+                };
+
+                minusBtn.addEventListener('click', function () { tryChangeQty(currentQty - 1, this); });
+                plusBtn.addEventListener('click', function () { tryChangeQty(currentQty + 1, this); });
+                minBtn.addEventListener('click', function () { tryChangeQty(0, this); });
+                if (maxBtn) maxBtn.addEventListener('click', function () { tryChangeQty(maxLimit, this); });
+
+                listContainer.appendChild(card);
+            });
+        }
+
+        function saveState() { localStorage.setItem(STORAGE_KEY, JSON.stringify(itemQuantities)); }
+
+        function updateSummary() {
+            let totalAmount = 0; let totalItems = 0;
+            allData.forEach(row => {
+                const qty = itemQuantities[row['ID']] || 0;
+                if (qty > 0) {
+                    const priceNum = parseInt((row['金額'] || '0').toString().replace(/[^0-9]/g, ''), 10) || 0;
+                    totalAmount += (priceNum * qty); totalItems += qty;
+                }
+            });
+            document.getElementById('itemCount').textContent = totalItems.toLocaleString();
+            document.getElementById('totalPrice').textContent = totalAmount.toLocaleString();
+        }
+
+        document.getElementById('filterSelectedToggle').addEventListener('change', applyFilters);
+
+        // --- モーダル制御 ---
+        const confirmModal = document.getElementById('confirmModal');
+        document.getElementById('clearBtn').addEventListener('click', () => confirmModal.classList.add('show'));
+        document.getElementById('modalCancel').addEventListener('click', () => confirmModal.classList.remove('show'));
+        document.getElementById('modalOk').addEventListener('click', () => {
+            itemQuantities = {}; saveState(); updateSummary(); applyFilters();
+            confirmModal.classList.remove('show'); showToast('すべての数量をリセットしました。');
+        });
+
+        // --- シェア画像生成機能 ---
+        const shareModal = document.getElementById('shareModal');
+        const shareImagePreview = document.getElementById('shareImagePreview');
+        const shareImageLoading = document.getElementById('shareImageLoading');
+
+        document.getElementById('openShareBtn').addEventListener('click', async () => {
+            let totalItems = 0; let totalAmount = 0;
+            const purchaseItems = [];
+
+            allData.forEach(row => {
+                const qty = itemQuantities[row['ID']] || 0;
+                if (qty > 0) {
+                    const priceNum = parseInt((row['金額'] || '0').toString().replace(/[^0-9]/g, ''), 10) || 0;
+                    totalAmount += (priceNum * qty);
+                    totalItems += qty;
+                    purchaseItems.push({
+                        uma: row['ウマ娘'] || '',
+                        name: row['グッズ名'] || '',
+                        qty: qty,
+                        price: priceNum
+                    });
+                }
+            });
+
+            if (totalItems === 0) {
+                showToast('カートが空です。グッズを追加してください。');
+                return;
+            }
+
+            // モーダルを開きローディング表示
+            shareModal.classList.add('show');
+            shareImageLoading.style.display = 'block';
+            shareImagePreview.style.display = 'none';
+
+            // レシート用HTMLの組み立て
+            let html = `
             <div style="background: #fff; width: 420px; padding: 25px; box-sizing: border-box; font-family: 'Hiragino Kaku Gothic ProN', sans-serif; color: #333;">
                 <div style="text-align: center; border-bottom: 2px solid #333; padding-bottom: 12px; margin-bottom: 20px;">
                     <div style="font-size: 0.9rem; color: #555;">ウマ娘 7th EVENT in TOKYO</div>
                     <div style="font-size: 1.3rem; font-weight: bold;">グッズ被弾チェッカー</div>
                 </div>
         `;
-        
-        purchaseItems.forEach(item => {
-            const umaText = item.uma ? `<div style="font-size: 0.75rem; color: #666; margin-bottom: 2px;">${item.uma}</div>` : '';
-            html += `
+
+            purchaseItems.forEach(item => {
+                const umaText = item.uma ? `<div style="font-size: 0.75rem; color: #666; margin-bottom: 2px;">${item.uma}</div>` : '';
+                html += `
                 <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #ccc; padding: 8px 0; align-items: flex-end;">
                     <div style="flex: 1; padding-right: 15px;">
                         ${umaText}
@@ -621,9 +1095,9 @@
                     </div>
                 </div>
             `;
-        });
+            });
 
-        html += `
+            html += `
                 <div style="margin-top: 20px; border-top: 2px solid #333; padding-top: 15px; display: flex; justify-content: space-between; align-items: center;">
                     <div style="font-size: 1rem; font-weight: bold;">合計被弾額 (${totalItems}点)</div>
                     <div style="font-size: 1.5rem; font-weight: bold; color: #d32f2f;">${totalAmount.toLocaleString()}円</div>
@@ -631,39 +1105,40 @@
             </div>
         `;
 
-        const renderContainer = document.getElementById('renderContainer');
-        renderContainer.innerHTML = html;
+            const renderContainer = document.getElementById('renderContainer');
+            renderContainer.innerHTML = html;
 
-        try {
-            // html2canvasで画像を生成
-            const canvas = await html2canvas(renderContainer.firstElementChild, { 
-                scale: 2, 
-                backgroundColor: '#ffffff',
-                useCORS: true 
-            });
-            const imgDataUrl = canvas.toDataURL('image/png');
-            
-            // プレビュー表示
-            shareImagePreview.src = imgDataUrl;
-            shareImageLoading.style.display = 'none';
-            shareImagePreview.style.display = 'block';
-            
-            // Twitter用のテキストとリンク設定
-            const tweetText = `ウマ娘 7th EVENTで計${totalItems}点のグッズを購入予定！\n合計被弾額: ${totalAmount.toLocaleString()}円\n\n#グッズ被弾チェッカー #ウマ娘7th`;
-            const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
-            document.getElementById('shareTwitterBtn').href = twitterUrl;
+            try {
+                // html2canvasで画像を生成
+                const canvas = await html2canvas(renderContainer.firstElementChild, {
+                    scale: 2,
+                    backgroundColor: '#ffffff',
+                    useCORS: true
+                });
+                const imgDataUrl = canvas.toDataURL('image/png');
 
-        } catch (error) {
-            console.error('画像生成エラー:', error);
-            shareImageLoading.innerText = '画像の生成に失敗しました。';
-        }
-    });
+                // プレビュー表示
+                shareImagePreview.src = imgDataUrl;
+                shareImageLoading.style.display = 'none';
+                shareImagePreview.style.display = 'block';
 
-    document.getElementById('shareCloseBtn').addEventListener('click', () => {
-        shareModal.classList.remove('show');
-    });
+                // Twitter用のテキストとリンク設定
+                const tweetText = `ウマ娘 7th EVENTで計${totalItems}点のグッズを購入予定！\n合計被弾額: ${totalAmount.toLocaleString()}円\n\n#グッズ被弾チェッカー #ウマ娘7th`;
+                const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+                document.getElementById('shareTwitterBtn').href = twitterUrl;
 
-</script>
+            } catch (error) {
+                console.error('画像生成エラー:', error);
+                shareImageLoading.innerText = '画像の生成に失敗しました。';
+            }
+        });
+
+        document.getElementById('shareCloseBtn').addEventListener('click', () => {
+            shareModal.classList.remove('show');
+        });
+
+    </script>
 
 </body>
+
 </html>
